@@ -12,12 +12,12 @@ This project analyzes ECoG (Electrocorticography) data to compute the **Event-Re
 | `brain_data_channel_one.csv` | Contains the ECoG brain activity data recorded as a time series from a single electrode.      |
 | `events_file_ordered.csv`    | Lists trial events with the start time, peak time, and associated finger for each movement.   |
 | `fingers_erp_mean_output.csv` | The output file containing the averaged ERP matrix for each finger.                          |
-| `Main.ipynb`                 | The main Jupyter Notebook that processes the data, computes the ERP, generates visualizations, and saves results. |
+| `main.py`                    | The main Python script that processes the data, computes the ERP, generates visualizations, and saves results. |
 | `finger_data.csv`            | (Optional or additional) Could represent auxiliary data related to finger movement analysis.  |
 
 ---
 
-## **How It Works**
+## **How It Works***
 1. **Input Files:**
    - **`events_file_ordered.csv`**:
      - Contains details of movement trials.
@@ -32,7 +32,7 @@ This project analyzes ECoG (Electrocorticography) data to compute the **Event-Re
    - **`fingers_erp_mean_output.csv`**:
      - The ERP matrix (5 rows x 1201 columns) representing the averaged brain activity for each finger across trials.
 
-3. **Main Notebook (`Main.ipynb`):**
+3. **Main Script (`main.py`):**
    - Processes the input files to extract relevant signal windows for each trial.
    - Aligns and averages the ECoG signals to compute the ERP for each finger.
    - Visualizes the ERP results using Matplotlib.
@@ -48,16 +48,14 @@ This project analyzes ECoG (Electrocorticography) data to compute the **Event-Re
   ```
 
 ### **Steps**
-1. Place the input files (`brain_data_channel_one.csv` and `events_file_ordered.csv`) in the same directory as `Main.ipynb`.
-2. Open the notebook in Jupyter:
+1. Place the input files (`brain_data_channel_one.csv` and `events_file_ordered.csv`) in the same directory as `main.py`.
+2. Run the script from the command line:
    ```bash
-   jupyter notebook Main.ipynb
+   python main.py
    ```
-3. Run the cells step by step or all at once.
-
-### **Output**
-- A graph showing the averaged ERP for each finger.
-- A CSV file (`fingers_erp_mean_output.csv`) containing the ERP matrix.
+3. The script will generate the following outputs:
+   - A graph (`output_graph.png`) showing the averaged ERP for each finger.
+   - A CSV file (`fingers_erp_mean_output.csv`) containing the ERP matrix.
 
 ---
 
@@ -66,6 +64,12 @@ This project analyzes ECoG (Electrocorticography) data to compute the **Event-Re
   - **5 rows:** One for each finger (Finger 1 to Finger 5).
   - **1201 columns:** Time points from -200ms to +1000ms relative to the trial start.
 - Each cell represents the averaged brain activity at a specific time point for a specific finger.
+
+---
+
+## **Notes**
+- The script uses the non-interactive Matplotlib backend (`Agg`) for rendering plots to avoid GUI-related issues.
+- The generated graph will automatically open after being saved as `output_graph.png` if the system supports it.
 
 ---
 
